@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/compound-interest-calculator/static/css/main.f41453d3.chunk.css",
+    "main.js": "/compound-interest-calculator/static/js/main.45d9e7dc.chunk.js",
+    "main.js.map": "/compound-interest-calculator/static/js/main.45d9e7dc.chunk.js.map",
+    "runtime-main.js": "/compound-interest-calculator/static/js/runtime-main.a7efd688.js",
+    "runtime-main.js.map": "/compound-interest-calculator/static/js/runtime-main.a7efd688.js.map",
+    "static/js/2.d5e78a5a.chunk.js": "/compound-interest-calculator/static/js/2.d5e78a5a.chunk.js",
+    "static/js/2.d5e78a5a.chunk.js.map": "/compound-interest-calculator/static/js/2.d5e78a5a.chunk.js.map",
+    "index.html": "/compound-interest-calculator/index.html",
+    "precache-manifest.e76ecb4c74bad5aea428e0b1c46dddff.js": "/compound-interest-calculator/precache-manifest.e76ecb4c74bad5aea428e0b1c46dddff.js",
+    "service-worker.js": "/compound-interest-calculator/service-worker.js",
+    "static/css/main.f41453d3.chunk.css.map": "/compound-interest-calculator/static/css/main.f41453d3.chunk.css.map",
+    "static/js/2.d5e78a5a.chunk.js.LICENSE.txt": "/compound-interest-calculator/static/js/2.d5e78a5a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a7efd688.js",
+    "static/js/2.d5e78a5a.chunk.js",
+    "static/css/main.f41453d3.chunk.css",
+    "static/js/main.45d9e7dc.chunk.js"
+  ]
+}
