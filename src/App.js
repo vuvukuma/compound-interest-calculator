@@ -3,7 +3,8 @@ import './App.css';
 import Calculator from './components/Calculator'
 
 const App = () => (
-  <Calculator></Calculator>
+  <Calculator>
+  </Calculator>
 )
 
 export default App;
