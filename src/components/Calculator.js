@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
+import React, {useState } from 'react';
+import styled, { css } from 'styled-components';
 import CalculatorHeader from './CalculatorHeader';
 
 function Calculator() {
@@ -7,7 +7,10 @@ function Calculator() {
     const [annualInterestRate, setAnnualInterestRate] = useState(1.2);
     const [frequency, setFrequency] = useState(12);
     const [period, setPeriod] = useState(2);
-
+    const inputMixin = css`
+        height: 32px;
+        width: 100%;
+    `;
     const CalculatorContainer = styled.div`
         display: flex;
         flex-direction: column;
@@ -21,6 +24,19 @@ function Calculator() {
         flex-direction: column;
         text-align: left;
         padding-bottom: 16px;
+    `;
+    const CalculatorRowInput = styled.input`
+        ${inputMixin}
+    `;
+    const CalculatorRowSelect = styled.select`
+        ${inputMixin}   
+    `;
+    const CalculatorRowLabel = styled.label`
+        padding-bottom: 8px;
+    `;
+    const CalculatorResultRow = styled.div`
+        padding-bottom : 8px;
+        text-align: right;
     `;
 
     function getCompoundTotal() {
@@ -41,26 +57,26 @@ function Calculator() {
         <CalculatorContainer>
             <CalculatorHeader/>
             <CalculatorRow>
-                <label className="calculator-row__label" htmlFor="principal">투자 원금</label>
-                <input className="calculator-row__input" 
+                <CalculatorRowLabel htmlFor="principal">투자 원금</CalculatorRowLabel>
+                <CalculatorRowInput
                     name="principal" 
                     type="number"
                     value={principal}
                     onChange={(e) => setPrincipal(e.target.value)}>
-                </input>
+                </CalculatorRowInput>
             </CalculatorRow>
             <CalculatorRow>
-                <label className="calculator-row__label" htmlFor="annualInterestRate">연 이자율(%)</label>
-                <input className="calculator-row__input" 
+                <CalculatorRowLabel htmlFor="annualInterestRate">연 이자율(%)</CalculatorRowLabel>
+                <CalculatorRowInput 
                     name="annualInterestRate" 
                     type="number"
                     value={annualInterestRate}
                     onChange={(e) => setAnnualInterestRate(e.target.value)}>
-                </input>
+                </CalculatorRowInput>
             </CalculatorRow>
             <CalculatorRow>
-                <label className="calculator-row__label" htmlFor="frequency">복리계산빈도</label>
-                <select className="calculator-row__input" 
+                <CalculatorRowLabel htmlFor="frequency">복리계산빈도</CalculatorRowLabel>
+                <CalculatorRowSelect
                     name="frequency" 
                     value={frequency}
                     onChange={(e) => setFrequency(e.target.value)}>
@@ -68,27 +84,27 @@ function Calculator() {
                     <option value="6">6개월 반기복리</option>
                     <option value="3">3개월 분기복리</option>
                     <option value="1">월 복리</option>
-                </select>
+                </CalculatorRowSelect>
             </CalculatorRow>
             <CalculatorRow>
-                <label className="calculator-row__label" htmlFor="period">기간(년)</label>
-                <input className="calculator-row__input" 
+                <CalculatorRowLabel htmlFor="period">기간 (년)</CalculatorRowLabel>
+                <CalculatorRowInput 
                     name="period" 
                     type="number"
                     value={period}
                     onChange={(e) => setPeriod(e.target.value)}>    
-                </input>
+                </CalculatorRowInput>
             </CalculatorRow>
             <CalculatorRow>
-                <div className="calculator-result-row">
+                <CalculatorResultRow>
                     만기지급금액 : <strong>{ round(getCompoundTotal()).toLocaleString() }</strong> 원
-                </div>
-                <div className="calculator-result-row">
+                </CalculatorResultRow>
+                <CalculatorResultRow>
                     원금 : { principal.toLocaleString() } 원
-                </div>
-                <div className="calculator-result-row">
+                </CalculatorResultRow>
+                <CalculatorResultRow>
                     이자 : { round(getTotalInterest()).toLocaleString() } 원
-                </div>
+                </CalculatorResultRow>
             </CalculatorRow>
         </CalculatorContainer>
     );
