@@ -76,9 +76,7 @@ function Calculator() {
             <CalculatorRow>
                 <CalculatorRowLabel htmlFor="annualInterestRate">연 이자율(%)</CalculatorRowLabel>
                 <CalculatorRowInput 
-                    name="annualInterestRate" 
-                    inputmode="numeric" 
-                    pattern="[0-9]*"
+                    name="annualInterestRate"
                     type="number"
                     value={annualInterestRate}
                     onChange={(e) => setAnnualInterestRate(e.target.value)}>
