@@ -8,8 +8,13 @@ function Calculator() {
     const [frequency, setFrequency] = useState(12);
     const [period, setPeriod] = useState(2);
     const inputMixin = css`
-        height: 32px;
+        height: 42px;
         width: 100%;
+        border: 1px solid;
+        border-radius: 4px;
+        border-color: #2E3958;
+        padding: 0 8px;
+        font-size: 16px;
     `;
     const CalculatorContainer = styled.div`
         display: flex;
@@ -23,7 +28,7 @@ function Calculator() {
         display: flex;
         flex-direction: column;
         text-align: left;
-        padding-bottom: 16px;
+        padding-bottom: 24px;
     `;
     const CalculatorRowInput = styled.input`
         ${inputMixin}
@@ -32,7 +37,7 @@ function Calculator() {
         ${inputMixin}   
     `;
     const CalculatorRowLabel = styled.label`
-        padding-bottom: 8px;
+        padding-bottom: 4px;
     `;
     const CalculatorResultRow = styled.div`
         padding-bottom : 8px;
