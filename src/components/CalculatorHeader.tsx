@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 
 const CalculatorHeaderContainer = styled.div`
     padding-bottom: 12px;
@@ -13,7 +14,9 @@ const CalculatorHeaderDescription = styled.p`
 
 const CalculatorHeader = () => (
     <CalculatorHeaderContainer>
-        <CalculatorHeaderTitle>복리계산기</CalculatorHeaderTitle>
+        <CalculatorHeaderTitle>
+            <FormattedMessage defaultMessage="복리계산기" id="calculator.header.title"></FormattedMessage>
+        </CalculatorHeaderTitle>
         <CalculatorHeaderDescription></CalculatorHeaderDescription>
     </CalculatorHeaderContainer>
 )

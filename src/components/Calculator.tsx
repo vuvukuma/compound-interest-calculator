@@ -1,16 +1,8 @@
-import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
+import React, { useState, useCallback } from 'react';
+import styled from 'styled-components';
 import CalculatorHeader from './CalculatorHeader';
+import { TextField, Select } from '@shopify/polaris';
 
-const inputMixin = css`
-    height: 42px;
-    width: 100%;
-    border: 1px solid;
-    border-radius: 4px;
-    border-color: #2E3958;
-    padding: 0 8px;
-    font-size: 16px;
-`;
 const CalculatorContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -25,12 +17,6 @@ const CalculatorRow = styled.div`
     text-align: left;
     padding-bottom: 24px;
 `;
-const CalculatorRowInput = styled.input`
-    ${inputMixin}
-`;
-const CalculatorRowSelect = styled.select`
-    ${inputMixin}   
-`;
 const CalculatorRowLabel = styled.label`
     padding-bottom: 4px;
 `;
@@ -40,22 +26,38 @@ const CalculatorResultRow = styled.div`
 `;
 
 function Calculator() {
-    const [principal, setPrincipal] = useState(1000000);
-    const [annualInterestRate, setAnnualInterestRate] = useState(1.2);
-    const [frequency, setFrequency] = useState(12);
-    const [period, setPeriod] = useState(2);
+    const [principal, setPrincipal] = useState('1000000');
+    const [annualInterestRate, setAnnualInterestRate] = useState('2');
+    const [frequency, setFrequency] = useState('12');
+    const [period, setPeriod] = useState('12');
+
+    const handlePrincipalChange = useCallback((value) => setPrincipal(value), []);
+    const handleAnnualInterestRateChange = useCallback((value) => setAnnualInterestRate(value), []);
+    const handleFrequencyChange = useCallback((value) => setFrequency(value), []);
+    const handlePeriodChange = useCallback((value) => setPeriod(value), []);
+
+    const FrequencyOptions = [
+        {label: '연 복리', value: '12'},
+        {label: '6개월 반기복리', value: '6'},
+        {label: '3개월 분기복리', value: '3'},
+        {label: '월 복리', value: '1'},
+    ]
+    
+    function parse(inputValue: string): number {
+        return Number.parseInt(inputValue, 10);
+    }
 
     function getCompoundTotal() {
-        const cycle = 12 / frequency;
+        const cycle: number = 12 / parse(frequency);
 
-        return principal * Math.pow((1 + (annualInterestRate / 100 / cycle)), (period * cycle));
+        return parse(principal) * Math.pow((1 + parse(annualInterestRate) / 100 / cycle), (parse(period) * cycle));
     }
     
     function getTotalInterest() {
-        return getCompoundTotal() - principal;
+        return getCompoundTotal() - parse(principal);
     }
 
-    function round(num) {
+    function round(num: number) {
         return Math.round((num + Number.EPSILON) * 100) / 100
     }
 
@@ -64,45 +66,41 @@ function Calculator() {
             <CalculatorHeader/>
             <CalculatorRow>
                 <CalculatorRowLabel htmlFor="principal">투자 원금</CalculatorRowLabel>
-                <CalculatorRowInput
+                <TextField
+                    label=''
                     name="principal"
-                    inputmode="numeric"
                     pattern="[0-9]*" 
                     type="number"
                     value={principal}
-                    onChange={(e) => setPrincipal(e.target.value)}>
-                </CalculatorRowInput>
+                    onChange={handlePrincipalChange}/>
             </CalculatorRow>
             <CalculatorRow>
                 <CalculatorRowLabel htmlFor="annualInterestRate">연 이자율(%)</CalculatorRowLabel>
-                <CalculatorRowInput 
+                <TextField
+                    label=''
                     name="annualInterestRate"
                     type="number"
                     value={annualInterestRate}
-                    onChange={(e) => setAnnualInterestRate(e.target.value)}>
-                </CalculatorRowInput>
+                    onChange={handleAnnualInterestRateChange}/>
             </CalculatorRow>
             <CalculatorRow>
                 <CalculatorRowLabel htmlFor="frequency">복리계산빈도</CalculatorRowLabel>
-                <CalculatorRowSelect
+                <Select
+                    label=''
                     name="frequency"
-                    onChange={(e) => setFrequency(e.target.value)}>
-                    <option value="12">연 복리</option>
-                    <option value="6">6개월 반기복리</option>
-                    <option value="3">3개월 분기복리</option>
-                    <option value="1">월 복리</option>
-                </CalculatorRowSelect>
+                    options={FrequencyOptions}
+                    value={frequency}
+                    onChange={handleFrequencyChange}/>
             </CalculatorRow>
             <CalculatorRow>
                 <CalculatorRowLabel htmlFor="period">기간 (년)</CalculatorRowLabel>
-                <CalculatorRowInput 
+                <TextField
+                    label=''
                     name="period" 
                     type="number"
-                    inputmode="numeric" 
                     pattern="[0-9]*"
                     value={period}
-                    onChange={(e) => setPeriod(e.target.value)}>    
-                </CalculatorRowInput>
+                    onChange={handlePeriodChange}/>
             </CalculatorRow>
             <CalculatorRow>
                 <CalculatorResultRow>

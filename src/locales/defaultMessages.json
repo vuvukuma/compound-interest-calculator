@@ -1,0 +1,11 @@
+[
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "복리계산기",
+        "id": "calculator.header.title"
+      }
+    ],
+    "path": "src/components/CalculatorHeader.json"
+  }
+]
