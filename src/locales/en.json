@@ -1,3 +1,17 @@
 {
-  "calculator.header.title": "Compound Interests Calculator"
+  "calculator.header.desc": "Use our calculator and check out the magic of the compound interest! 🔮",
+  "calculator.header.title": "Compound Interest Calculator 📈",
+  "calculator.input.frequency.annual": "Annualy",
+  "calculator.input.frequency.monthly": "Monthly",
+  "calculator.input.frequency.quarterly": "Quarterly",
+  "calculator.input.frequency.semiannual": "Semiannualy",
+  "calculator.input.label.annualInterestRate": "Annual Interest Rate",
+  "calculator.input.label.frequency": "Compound Frequency",
+  "calculator.input.label.period": "Length of Time in Years",
+  "calculator.input.label.principal": "Base Amount",
+  "calculator.result.label.compoundTotal": "Total Balance",
+  "calculator.result.label.principal": "Base Amount",
+  "calculator.result.label.totalInterest": "Total Interest",
+  "language.en": "English",
+  "language.ko": "Korean"
 }

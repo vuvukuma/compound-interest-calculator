@@ -1,3 +1,17 @@
 {
-  "calculator.header.title": "복리계산기"
+  "calculator.header.desc": "이 계산기를 사용해서, 복리의 마법을 확인해 보세요! 🔮",
+  "calculator.header.title": "복리계산기📈",
+  "calculator.input.frequency.annual": "연 복리",
+  "calculator.input.frequency.monthly": "월 복리",
+  "calculator.input.frequency.quarterly": "3개월 분기복리",
+  "calculator.input.frequency.semiannual": "6개월 반기복리",
+  "calculator.input.label.annualInterestRate": "연 이자율(%)",
+  "calculator.input.label.frequency": "복리 계산 빈도",
+  "calculator.input.label.period": "기간 (년)",
+  "calculator.input.label.principal": "투자 원금",
+  "calculator.result.label.compoundTotal": "만기 지급 금액",
+  "calculator.result.label.principal": "투자 원금",
+  "calculator.result.label.totalInterest": "이자 소득",
+  "language.en": "영어",
+  "language.ko": "한국어"
 }

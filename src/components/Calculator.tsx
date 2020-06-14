@@ -1,14 +1,13 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import CalculatorHeader from './CalculatorHeader';
+import CurrencySelector from './CurrencySelector';
 import { TextField, Select } from '@shopify/polaris';
+import { useIntl, defineMessages, FormattedMessage, FormattedNumber } from 'react-intl';
 
 const CalculatorContainer = styled.div`
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
-    padding: 12px;
-    max-width: 400px;
     text-align: center;
 `;
 const CalculatorRow = styled.div`
@@ -25,11 +24,32 @@ const CalculatorResultRow = styled.div`
     text-align: right;
 `;
 
-function Calculator() {
+const frequencyOptionsLabelMessages = defineMessages({
+    annual: {
+        id: 'calculator.input.frequency.annual',
+        defaultMessage: '연 복리',
+    },
+    semiannual: {
+        id: 'calculator.input.frequency.semiannual',
+        defaultMessage: '6개월 반기복리',
+    },
+    quarterly: {
+        id: 'calculator.input.frequency.quarterly',
+        defaultMessage: '3개월 분기복리',
+    },
+    monthly: {
+        id: 'calculator.input.frequency.monthly',
+        defaultMessage: '월 복리',
+    },
+});
+
+const Calculator = () => {
     const [principal, setPrincipal] = useState('1000000');
     const [annualInterestRate, setAnnualInterestRate] = useState('2');
     const [frequency, setFrequency] = useState('12');
     const [period, setPeriod] = useState('12');
+    const [currency, setCurrency] = useState('USD');
+    const intl = useIntl();
 
     const handlePrincipalChange = useCallback((value) => setPrincipal(value), []);
     const handleAnnualInterestRateChange = useCallback((value) => setAnnualInterestRate(value), []);
@@ -37,12 +57,12 @@ function Calculator() {
     const handlePeriodChange = useCallback((value) => setPeriod(value), []);
 
     const FrequencyOptions = [
-        {label: '연 복리', value: '12'},
-        {label: '6개월 반기복리', value: '6'},
-        {label: '3개월 분기복리', value: '3'},
-        {label: '월 복리', value: '1'},
+        { label: intl.formatMessage(frequencyOptionsLabelMessages.annual), value: '12' },
+        { label: intl.formatMessage(frequencyOptionsLabelMessages.semiannual), value: '6' },
+        { label: intl.formatMessage(frequencyOptionsLabelMessages.quarterly), value: '3' },
+        { label: intl.formatMessage(frequencyOptionsLabelMessages.monthly), value: '1' },
     ]
-    
+
     function parse(inputValue: string): number {
         return Number.parseInt(inputValue, 10);
     }
@@ -52,7 +72,7 @@ function Calculator() {
 
         return parse(principal) * Math.pow((1 + parse(annualInterestRate) / 100 / cycle), (parse(period) * cycle));
     }
-    
+
     function getTotalInterest() {
         return getCompoundTotal() - parse(principal);
     }
@@ -61,56 +81,74 @@ function Calculator() {
         return Math.round((num + Number.EPSILON) * 100) / 100
     }
 
+    const handleChangeCurrency = (currency: string) => {
+        setCurrency(currency);
+    }
+
     return (
         <CalculatorContainer>
-            <CalculatorHeader/>
+            <CalculatorHeader />
             <CalculatorRow>
-                <CalculatorRowLabel htmlFor="principal">투자 원금</CalculatorRowLabel>
+                <CalculatorRowLabel htmlFor="principal">
+                    <FormattedMessage defaultMessage="투자 원금" id="calculator.input.label.principal"></FormattedMessage>
+                </CalculatorRowLabel>
                 <TextField
                     label=''
                     name="principal"
-                    pattern="[0-9]*" 
+                    pattern="[0-9]*"
                     type="number"
                     value={principal}
-                    onChange={handlePrincipalChange}/>
+                    onChange={handlePrincipalChange} />
+                <CurrencySelector 
+                    currency={currency}
+                    handleChangeCurrency={handleChangeCurrency} />
             </CalculatorRow>
             <CalculatorRow>
-                <CalculatorRowLabel htmlFor="annualInterestRate">연 이자율(%)</CalculatorRowLabel>
+                <CalculatorRowLabel htmlFor="annualInterestRate">
+                    <FormattedMessage defaultMessage="연 이자율(%)" id="calculator.input.label.annualInterestRate"></FormattedMessage>
+                </CalculatorRowLabel>
                 <TextField
                     label=''
                     name="annualInterestRate"
                     type="number"
                     value={annualInterestRate}
-                    onChange={handleAnnualInterestRateChange}/>
+                    onChange={handleAnnualInterestRateChange} />
             </CalculatorRow>
             <CalculatorRow>
-                <CalculatorRowLabel htmlFor="frequency">복리계산빈도</CalculatorRowLabel>
+                <CalculatorRowLabel htmlFor="frequency">
+                    <FormattedMessage defaultMessage="복리계산빈도" id="calculator.input.label.frequency"></FormattedMessage>
+                </CalculatorRowLabel>
                 <Select
                     label=''
                     name="frequency"
                     options={FrequencyOptions}
                     value={frequency}
-                    onChange={handleFrequencyChange}/>
+                    onChange={handleFrequencyChange} />
             </CalculatorRow>
             <CalculatorRow>
-                <CalculatorRowLabel htmlFor="period">기간 (년)</CalculatorRowLabel>
+                <CalculatorRowLabel htmlFor="period">
+                    <FormattedMessage defaultMessage="기간 (년)" id="calculator.input.label.period"></FormattedMessage>
+                </CalculatorRowLabel>
                 <TextField
                     label=''
-                    name="period" 
+                    name="period"
                     type="number"
                     pattern="[0-9]*"
                     value={period}
-                    onChange={handlePeriodChange}/>
+                    onChange={handlePeriodChange} />
             </CalculatorRow>
             <CalculatorRow>
                 <CalculatorResultRow>
-                    만기지급금액 : <strong>{ round(getCompoundTotal()).toLocaleString() }</strong> 원
+                    <FormattedMessage defaultMessage="만기지급금액 : " id="calculator.result.label.compoundTotal"></FormattedMessage>
+                    <FormattedNumber value={round(getCompoundTotal())} style="currency" currency={currency}></FormattedNumber>
                 </CalculatorResultRow>
                 <CalculatorResultRow>
-                    원금 : { principal.toLocaleString() } 원
+                    <FormattedMessage defaultMessage="원금 : " id="calculator.result.label.principal"></FormattedMessage>
+                    <FormattedNumber value={parse(principal)} style="currency" currency={currency}></FormattedNumber>
                 </CalculatorResultRow>
                 <CalculatorResultRow>
-                    이자 : { round(getTotalInterest()).toLocaleString() } 원
+                    <FormattedMessage defaultMessage="이자 : " id="calculator.result.label.totalInterest"></FormattedMessage>
+                    <FormattedNumber value={round(getTotalInterest())} style="currency" currency={currency}></FormattedNumber>
                 </CalculatorResultRow>
             </CalculatorRow>
         </CalculatorContainer>

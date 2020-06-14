@@ -2,10 +2,76 @@
   {
     "descriptors": [
       {
-        "defaultMessage": "복리계산기",
+        "defaultMessage": "연 복리",
+        "id": "calculator.input.frequency.annual"
+      },
+      {
+        "defaultMessage": "6개월 반기복리",
+        "id": "calculator.input.frequency.semiannual"
+      },
+      {
+        "defaultMessage": "3개월 분기복리",
+        "id": "calculator.input.frequency.quarterly"
+      },
+      {
+        "defaultMessage": "월 복리",
+        "id": "calculator.input.frequency.monthly"
+      },
+      {
+        "defaultMessage": "투자 원금",
+        "id": "calculator.input.label.principal"
+      },
+      {
+        "defaultMessage": "연 이자율(%)",
+        "id": "calculator.input.label.annualInterestRate"
+      },
+      {
+        "defaultMessage": "복리계산빈도",
+        "id": "calculator.input.label.frequency"
+      },
+      {
+        "defaultMessage": "기간 (년)",
+        "id": "calculator.input.label.period"
+      },
+      {
+        "defaultMessage": "만기지급금액 : ",
+        "id": "calculator.result.label.compoundTotal"
+      },
+      {
+        "defaultMessage": "원금 : ",
+        "id": "calculator.result.label.principal"
+      },
+      {
+        "defaultMessage": "이자 : ",
+        "id": "calculator.result.label.totalInterest"
+      }
+    ],
+    "path": "src/components/Calculator.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "복리 계산기 📈",
         "id": "calculator.header.title"
+      },
+      {
+        "defaultMessage": "이 계산기를 사용해서, 복리의 마법을 확인해 보세요! 🔮",
+        "id": "calculator.header.desc"
       }
     ],
     "path": "src/components/CalculatorHeader.json"
+  },
+  {
+    "descriptors": [
+      {
+        "defaultMessage": "한국어",
+        "id": "language.ko"
+      },
+      {
+        "defaultMessage": "영어",
+        "id": "language.en"
+      }
+    ],
+    "path": "src/components/LanguageSelector.json"
   }
 ]
