@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { IntlProvider } from 'react-intl';
-import Calculator from './components/Calculator';
-import LanguageSelector from './components/LanguageSelector';
-import Messages from './locales';
+import Header from 'components/layout/Header';
+import Calculator from 'components/calculator/Calculator';
+import Messages from 'locales';
 
 const Container = styled.div`
   margin: 0 auto;
@@ -22,12 +22,11 @@ function App() {
     <IntlProvider
       locale={lang}
       messages={Messages[lang]}>
-      <Container>
-        <Calculator />
-        <LanguageSelector
+      <Header 
           lang={lang}
           handleChangeLanguage={handleChangeLanguage} />
-      
+      <Container>
+        <Calculator />
       </Container>
     </IntlProvider>
   )

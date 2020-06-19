@@ -9,9 +9,9 @@
   "calculator.input.label.frequency": "Compound Frequency",
   "calculator.input.label.period": "Length of Time in Years",
   "calculator.input.label.principal": "Base Amount",
-  "calculator.result.label.compoundTotal": "Total Balance",
+  "calculator.result.label.compoundTotal": "Total Balance 💰",
   "calculator.result.label.principal": "Base Amount",
   "calculator.result.label.totalInterest": "Total Interest",
-  "language.en": "English",
-  "language.ko": "Korean"
+  "language.en": "English (EN)",
+  "language.ko": "한국어 (KO)"
 }

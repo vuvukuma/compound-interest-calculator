@@ -1,4 +1,5 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
+import styled from 'styled-components';
 import { Select } from '@shopify/polaris';
 import { useIntl, defineMessages } from 'react-intl';
 
@@ -13,6 +14,10 @@ const languageMessages = defineMessages({
     },
 });
 
+const SelectContainer = styled.div`
+    margin: auto 0 auto 16px;
+`
+
 interface LanguageSelectorProps {
     lang: string | undefined;
     handleChangeLanguage: ((selected: string) => void) | undefined;
@@ -26,12 +31,14 @@ const LanguageSelector = (props: LanguageSelectorProps) => {
     ]
 
     return (
-        <Select
-            label=''
-            name="language"
-            options={LanguageOptions}
-            value={props.lang}
-            onChange={props.handleChangeLanguage} />
+        <SelectContainer>
+            <Select
+                label=''
+                name="language"
+                options={LanguageOptions}
+                value={props.lang}
+                onChange={props.handleChangeLanguage} />
+        </SelectContainer>
     )
 }
 

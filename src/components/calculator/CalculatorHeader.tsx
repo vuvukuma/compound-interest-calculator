@@ -1,22 +1,23 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
+import Colors from '../../constants/Colors';
 
 const CalculatorHeaderContainer = styled.div`
     text-align: left;
-    padding-bottom: 12px;
 `;
-const CalculatorHeaderTitle = styled.h1`
-    display: block;
-    text-align: left;
+const CalculatorHeaderTitle = styled.div`
     height: 28px;
+    margin-top: 4px;
+    display: block;
     font-size: 21px;
-    font-weight: 400;
-    line-height: 28px;
+    font-weight: 600;
+    line-height: initial;
 `;
 const CalculatorHeaderDescription = styled.p`
-    padding-top: 16px;
-    color: #75839F;
+    margin-top: 8px;
+    padding-bottom: 16px;
+    color: ${Colors.secondary};
 `;
 
 const CalculatorHeader = () => (
