@@ -8,7 +8,7 @@ import Messages from 'locales';
 const Container = styled.div`
   margin: 0 auto;
   padding: 12px;
-  max-width: 400px;
+  max-width: 728px;
   text-align: center;
 `;
 

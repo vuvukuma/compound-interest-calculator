@@ -1,9 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
-import Colors from '../../constants/Colors';
+import { Colors } from '../../constants';
 
 const CalculatorHeaderContainer = styled.div`
+    margin: 0 10px;
     text-align: left;
 `;
 const CalculatorHeaderTitle = styled.div`

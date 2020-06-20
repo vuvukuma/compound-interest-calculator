@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import LanguageSelector from '../LanguageSelector';
-import Colors from '../../constants/Colors';
+import { Colors } from '../../constants';
 import { ReactComponent as HambergerIcon } from 'icons/mobile-hamburger.svg';
 
 const HeaderContainer = styled.div`

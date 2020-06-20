@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import Colors from 'constants/Colors';
+import { Colors } from '../../constants';
 import Dropdown from 'icons/dropdown.svg';
 
 const StyledCurrencySelectorContainer = styled.div`
