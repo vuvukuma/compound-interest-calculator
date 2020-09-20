@@ -11,13 +11,12 @@ export const StyledCalculatorContainer = styled.div`
 `;
 export const StyledCalculator = styled.div`
     margin: 0 auto;
-
     ${Media.tablet`
         margin: 0;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-    `}
+    `};
 `;
 export const StyledCalculatorRow = styled.div`
     display: flex;

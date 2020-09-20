@@ -1,6 +1,6 @@
 import React from 'react';
 import { FormattedMessage, FormattedNumber } from 'react-intl';
-import Panel from 'components/layout/Panel';
+import Panel from '../../components/layout/Panel';
 import {
     StyledCalculatorResult,
     StyledCalculatorResultRow,
@@ -26,7 +26,8 @@ export const CalculatorResult = (props: CalculatorResultProps) => {
                             id="calculator.result.label.compoundTotal"></FormattedMessage>
                     </StyledCalculatorResultTotalLabel>
                     <StyledCalculatorResultTotalValue>
-                        <FormattedNumber value={props.compoundTotal} 
+                        <FormattedNumber value={props.compoundTotal}
+                            // eslint-disable-next-line 
                             style="currency" currency={props.currency}></FormattedNumber>
                     </StyledCalculatorResultTotalValue>
                 </StyledCalculatorResultTotal>
@@ -36,7 +37,8 @@ export const CalculatorResult = (props: CalculatorResultProps) => {
                             id="calculator.result.label.principal"></FormattedMessage>
                     </div>
                     <div>
-                        <FormattedNumber value={props.principal} 
+                        <FormattedNumber value={props.principal}
+                            // eslint-disable-next-line
                             style="currency" currency={props.currency}></FormattedNumber>
                     </div>                    
                 </StyledCalculatorResultRow>
@@ -46,7 +48,8 @@ export const CalculatorResult = (props: CalculatorResultProps) => {
                             id="calculator.result.label.totalInterest"></FormattedMessage>
                     </div>
                     <div>
-                        <FormattedNumber value={props.totalInterest} 
+                        <FormattedNumber value={props.totalInterest}
+                            // eslint-disable-next-line
                             style="currency" currency={props.currency}></FormattedNumber>
                     </div>
                 </StyledCalculatorResultRow>
