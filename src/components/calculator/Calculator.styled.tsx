@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import { Media } from '../../constants';
 
 export const StyledCalculatorContainer = styled.div`
+    margin: 0 auto;
+    padding: 12px;
+    max-width: 728px;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -26,7 +29,7 @@ export const StyledCalculatorRowLabel = styled.label`
     padding-bottom: 4px;
 `;
 export const StyledCalculatorResult = styled(StyledCalculatorContainer)`
-    margin: 8px 40px;
+    margin: 8px 20px;
 `;
 export const StyledCalculatorResultTotal = styled.div`
     display: flex;

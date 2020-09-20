@@ -23,7 +23,7 @@ const HambergerButton = styled.button`
 
 interface HeaderProps {
     lang: string | undefined;
-    handleChangeLanguage: ((selected: string) => void) | undefined;
+    handleChangeLanguage: (event: React.ChangeEvent<HTMLSelectElement>) => void | undefined;
 }
 
 const Header = (props: HeaderProps) => {

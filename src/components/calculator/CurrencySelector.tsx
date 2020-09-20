@@ -1,26 +1,9 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { Colors } from '../../constants';
-import Dropdown from 'icons/dropdown.svg';
+import { Select } from '../inputs';
 
 const StyledCurrencySelectorContainer = styled.div`
     display: flex;
-`;
-
-const StyledSelector = styled.select`
-    -moz-appearance:none;
-    -webkit-appearance:none;
-    width: 60px;
-    font-size: 14px;
-    padding-left: 16px;
-    appearance:none;
-    background: transparent;
-    background-repeat: no-repeat;
-    background-image: url(${Dropdown}), linear-gradient(to bottom, #ffffff, #f9fafb);;
-    background-position-x: calc(100% - 8px), 0;
-    background-position-y: 7px, 0;
-    border: solid 1px ${Colors.grey};
-    border-radius: 2px 0 0 2px;
 `;
 
 const StyledChildrenContainer = styled.div`
@@ -42,7 +25,7 @@ interface CurrencySelectorProps {
 const CurrencySelector = (props: CurrencySelectorProps) => {
     return (
         <StyledCurrencySelectorContainer>
-            <StyledSelector
+            <Select
                 name="currency"
                 value={props.currency}
                 onChange={props.handleChangeCurrency}>
@@ -51,7 +34,7 @@ const CurrencySelector = (props: CurrencySelectorProps) => {
                         return <option key={idx} value={option.value}>{option.label}</option>
                     })
                 }
-            </StyledSelector>
+            </Select>
             <StyledChildrenContainer>
                 { props.children }
             </StyledChildrenContainer>

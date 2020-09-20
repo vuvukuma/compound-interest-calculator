@@ -4,31 +4,31 @@ import { IntlProvider } from 'react-intl';
 import Header from 'components/layout/Header';
 import Calculator from 'components/calculator/Calculator';
 import Messages from 'locales';
+import { Colors } from './constants';
 
 const Container = styled.div`
-  margin: 0 auto;
-  padding: 12px;
-  max-width: 728px;
-  text-align: center;
+  height: 100%;
+  background-color: ${Colors.background}
 `;
 
 function App() {
   const [lang, setLang] = React.useState(navigator.language.slice(0, 2));
-  const handleChangeLanguage = (lang: string) => {
-    setLang(lang);
+  const handleChangeLanguage = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setLang(event.target.value);
   }
 
   return (
-    <IntlProvider
-      locale={lang}
-      messages={Messages[lang]}>
-      <Header 
-          lang={lang}
-          handleChangeLanguage={handleChangeLanguage} />
-      <Container>
-        <Calculator />
-      </Container>
-    </IntlProvider>
+    <Container>
+      <IntlProvider 
+        locale={lang}
+        messages={Messages[lang]}>
+        <Header
+            lang={lang}
+            handleChangeLanguage={handleChangeLanguage} />
+        
+          <Calculator />
+      </IntlProvider>
+    </Container>
   )
 }
 

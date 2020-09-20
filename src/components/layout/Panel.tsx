@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { Colors, Shadows, Media } from '../../constants';
+import { Colors, Shadows } from '../../constants';
 
 const StyledPannel = styled.div`
     width: 344px;

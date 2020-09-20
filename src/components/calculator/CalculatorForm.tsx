@@ -1,8 +1,8 @@
 import React from 'react';
 import { FormattedMessage } from 'react-intl';
-import { TextField, Select } from '@shopify/polaris';
 import Panel from 'components/layout/Panel';
 import CurrencySelector from './CurrencySelector';
+import { Select, TextInput } from '../inputs';
 import {
     StyledCalculatorRow,
     StyledCalculatorRowLabel,
@@ -32,11 +32,9 @@ export const CalculatorForm = (props: CalculatorFormProps) => {
                 <CurrencySelector
                     currency={props.currency}
                     handleChangeCurrency={props.handleChangeCurrency}>
-                    <TextField
-                        label=''
+                    <TextInput
                         name="principal"
                         pattern="[0-9]*"
-                        type="number"
                         value={props.principal}
                         onChange={props.handlePrincipalChange} />
                 </CurrencySelector>
@@ -45,10 +43,8 @@ export const CalculatorForm = (props: CalculatorFormProps) => {
                 <StyledCalculatorRowLabel htmlFor="annualInterestRate">
                     <FormattedMessage defaultMessage="연 이자율(%)" id="calculator.input.label.annualInterestRate"></FormattedMessage>
                 </StyledCalculatorRowLabel>
-                <TextField
-                    label=''
+                <TextInput 
                     name="annualInterestRate"
-                    type="number"
                     value={props.annualInterestRate}
                     onChange={props.handleAnnualInterestRateChange} />
             </StyledCalculatorRow>
@@ -57,20 +53,18 @@ export const CalculatorForm = (props: CalculatorFormProps) => {
                     <FormattedMessage defaultMessage="복리계산빈도" id="calculator.input.label.frequency"></FormattedMessage>
                 </StyledCalculatorRowLabel>
                 <Select
-                    label=''
                     name="frequency"
-                    options={props.frequencyOptions}
                     value={props.frequency}
-                    onChange={props.handleFrequencyChange} />
+                    onChange={props.handleFrequencyChange}>
+                    {props.frequencyOptions.map(option => <option key={option.value} value={option.value}>{option.label}</option>)}
+                </Select>
             </StyledCalculatorRow>
             <StyledCalculatorRow>
                 <StyledCalculatorRowLabel htmlFor="period">
                     <FormattedMessage defaultMessage="기간 (년)" id="calculator.input.label.period"></FormattedMessage>
                 </StyledCalculatorRowLabel>
-                <TextField
-                    label=''
+                <TextInput
                     name="period"
-                    type="number"
                     pattern="[0-9]*"
                     value={props.period}
                     onChange={props.handlePeriodChange} />

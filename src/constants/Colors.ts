@@ -3,6 +3,7 @@ export const Colors = {
     'secondary': '#616e92',
     'grey': '#c4cdd5',
     'white': 'white',
+    'background': '#F7F9FC;',
 }
 
 export default Colors;

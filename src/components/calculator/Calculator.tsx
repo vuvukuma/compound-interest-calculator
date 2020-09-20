@@ -32,10 +32,10 @@ const Calculator = () => {
     const [currency, setCurrency] = useState('USD');
     const intl = useIntl();
 
-    const handlePrincipalChange = useCallback((value) => setPrincipal(value), []);
-    const handleAnnualInterestRateChange = useCallback((value) => setAnnualInterestRate(value), []);
-    const handleFrequencyChange = useCallback((value) => setFrequency(value), []);
-    const handlePeriodChange = useCallback((value) => setPeriod(value), []);
+    const handlePrincipalChange = useCallback((event) => setPrincipal(event.target.value.toString()), []);
+    const handleAnnualInterestRateChange = useCallback((event) => setAnnualInterestRate(event.target.value.toString()), []);
+    const handleFrequencyChange = useCallback((event) => setFrequency(event.target.value.toString()), []);
+    const handlePeriodChange = useCallback((event) => setPeriod(event.target.value.toString()), []);
 
     const frequencyOptions = [
         { label: intl.formatMessage(frequencyOptionsLabelMessages.annual), value: '12' },
@@ -45,6 +45,8 @@ const Calculator = () => {
     ]
 
     function parse(inputValue: string): number {
+        if (inputValue === '') return 0;
+
         return Number.parseInt(inputValue, 10);
     }
 
